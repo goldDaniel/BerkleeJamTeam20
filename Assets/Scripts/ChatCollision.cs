@@ -12,10 +12,12 @@ public class ChatCollision : MonoBehaviour
 
     public Sprite[] possibleSprites;
 
-    private int sellIndex;
-    private int buyIndex;
+    public int sellIndex;
+    public int buyIndex;
 
     private GameObject display;
+
+    public PlayerController player;
 
 
     public void Start()
@@ -31,6 +33,10 @@ public class ChatCollision : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        player.canTrade = true;
+        player.sellIndex = this.sellIndex;
+        player.buyIndex = this.buyIndex;
+
         if(collision.gameObject.tag == "Player")
         {
             camController.targetOrthoSize = 6;
@@ -80,6 +86,8 @@ public class ChatCollision : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
+        player.canTrade = false;
+
         if (collision.gameObject.tag == "Player")
         {
             camController.targetOrthoSize = 12;

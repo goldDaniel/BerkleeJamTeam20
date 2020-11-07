@@ -8,6 +8,11 @@ public class PlayerController : MonoBehaviour
 
     public Rigidbody2D body;
 
+    public bool canTrade;
+    public int sellIndex;
+    public int buyIndex;
+    public Inventory inventory;
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,5 +46,17 @@ public class PlayerController : MonoBehaviour
 
         velocity = velocity.normalized * speed;
         body.velocity = velocity;
+
+        if (Input.GetKey(KeyCode.T) && canTrade)
+        {
+            if (inventory.currItemIndex != buyIndex)
+            {
+                Debug.Log("invalid trade!");
+            }
+            else
+            {
+                inventory.tradeItem(sellIndex);
+            }
+        }
     }
 }
