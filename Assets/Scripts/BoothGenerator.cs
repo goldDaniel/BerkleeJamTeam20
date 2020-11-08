@@ -9,7 +9,7 @@ public class BoothGenerator : MonoBehaviour
     public CameraController controller;
     public PlayerController player;
 
-    public int boothCount = 4;
+    public int level = 1;
 
     public List<Sprite> boothSprites;
 
@@ -20,6 +20,8 @@ public class BoothGenerator : MonoBehaviour
         List<Transform> kioskTransforms = new List<Transform>();
 
         float minDistanceFromKiosk = 15;
+
+        int boothCount = 4 + (2 * (level - 1));
 
         for(int i = 0; i < boothCount; i++)
         {
@@ -34,20 +36,26 @@ public class BoothGenerator : MonoBehaviour
 
 
             Vector3 pos = new Vector3();
-            pos.x = Random.Range(-20, 20);
-            pos.y = Random.Range(-20, 20);
-            booth.transform.position = pos;
+            
 
             bool positionFound = false;
-            //while (!positionFound)
-            //{
-            //    foreach (Transform t in kioskTransforms)
-            //    {
+            while (!positionFound)
+            {
+                positionFound = true;
 
-            //    }
-            //}
+                pos.x = Random.Range(-20, 20);
+                pos.y = Random.Range(-20, 20);
+                foreach (Transform t in kioskTransforms)
+                {
+                    if(Vector3.Distance(pos, t.position) < minDistanceFromKiosk)
+                    {
+                        positionFound = false;
+                    }
+                }
+            }
+            booth.transform.position = pos;
 
-            
+
 
 
 
