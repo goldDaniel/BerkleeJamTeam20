@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -39,6 +38,8 @@ public class ChatCollision : MonoBehaviour
 
             camController.targetOrthoSize = 6;
             camController.targetPosition = this.transform;
+
+
             display = new GameObject("Booth Text");
             display.transform.parent = GameObject.Find("UI").transform.GetChild(1);
             display.transform.localScale = new Vector3(1, 1, 1);
@@ -78,6 +79,7 @@ public class ChatCollision : MonoBehaviour
 
 
             display.transform.position = this.transform.position;
+            
         }
 
         
@@ -90,6 +92,7 @@ public class ChatCollision : MonoBehaviour
         {
             camController.targetOrthoSize = 12;
             camController.targetPosition = collision.gameObject.transform;
+            camController.offset = 0;
 
             player.SetBooth(null);
 
