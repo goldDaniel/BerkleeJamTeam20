@@ -12,6 +12,8 @@ public class ChatCollision : MonoBehaviour
 
     private GameObject display;
 
+    public Sprite bubbleSprite;
+
     public PlayerController player;
 
 
@@ -48,37 +50,45 @@ public class ChatCollision : MonoBehaviour
             display.transform.parent = GameObject.Find("UI").transform.GetChild(1);
             display.transform.localScale = new Vector3(1, 1, 1);
 
+            GameObject bubble = new GameObject("Bubble");
+            Image image = bubble.AddComponent<Image>();
+            image.rectTransform.SetParent(display.transform);
+            image.rectTransform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+            image.rectTransform.localPosition += new Vector3(35, 50, -1);
+            image.overrideSprite = bubbleSprite;
 
             GameObject textGO = new GameObject("Title Text");
             Text text = textGO.AddComponent<Text>();
             text.rectTransform.SetParent(display.transform);
-            text.rectTransform.localPosition += new Vector3(6, 10, 0);
-            text.rectTransform.localScale = new Vector3(0.55f, 0.55f, 0.55f);
+            text.rectTransform.localPosition += new Vector3(42, 60, 0);
+            text.rectTransform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
             text.text = "I will trade";
             text.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+            text.color = Color.black;
 
 
             GameObject buyingGO = new GameObject("Buying");
-            Image image = buyingGO.AddComponent<Image>();
+            image = buyingGO.AddComponent<Image>();
             image.rectTransform.SetParent(display.transform);
-            image.rectTransform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
-            image.rectTransform.localPosition += new Vector3(-16, 0, 0);
+            image.rectTransform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+            image.rectTransform.localPosition += new Vector3(10, 60, 0);
             image.overrideSprite = booth.buying.icon;
 
 
             GameObject forTextGO = new GameObject("Space Text");
             text = forTextGO.AddComponent<Text>();
             text.rectTransform.SetParent(display.transform);
-            text.rectTransform.localPosition += new Vector3(24, -16, 0);
-            text.rectTransform.localScale = new Vector3(0.55f, 0.55f, 0.55f);
+            text.rectTransform.localPosition += new Vector3(40, 50, 0);
+            text.rectTransform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
             text.text = "for";
             text.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+            text.color = Color.black;
 
             GameObject sellingGO = new GameObject("Selling");
             image = sellingGO.AddComponent<Image>();
             image.rectTransform.SetParent(display.transform);
-            image.rectTransform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
-            image.rectTransform.localPosition += new Vector3(16, 0, 0);
+            image.rectTransform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+            image.rectTransform.localPosition += new Vector3(40, 60, 0);
             image.overrideSprite = booth.selling.icon;
 
 
