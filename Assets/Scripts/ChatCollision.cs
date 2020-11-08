@@ -7,13 +7,8 @@ public class ChatCollision : MonoBehaviour
 {
     
     public CameraController camController;
-    
-    
 
-    public Sprite[] possibleSprites;
-
-    public int sellIndex;
-    public int buyIndex;
+    private Booth booth;
 
     private GameObject display;
 
@@ -22,20 +17,22 @@ public class ChatCollision : MonoBehaviour
 
     public void Start()
     {
-        sellIndex = Random.Range(0, possibleSprites.Length);
+        booth = gameObject.GetComponentInParent<Booth>();
+        ItemDatabase db = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>();
+        
 
-        buyIndex = sellIndex;
-        while(buyIndex == sellIndex)
+        booth.selling = db.itemList[Random.Range(0, db.itemList.Count)];
+
+        booth.buying = booth.selling;
+        while(booth.buying == booth.selling)
         {
-            buyIndex = Random.Range(0, possibleSprites.Length);
+            booth.buying = db.itemList[Random.Range(0, db.itemList.Count)];
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        player.canTrade = true;
-        player.sellIndex = this.sellIndex;
-        player.buyIndex = this.buyIndex;
+        player.SetBooth(booth);
 
         if(collision.gameObject.tag == "Player")
         {
@@ -62,7 +59,7 @@ public class ChatCollision : MonoBehaviour
         image.rectTransform.SetParent(display.transform);
         image.rectTransform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
         image.rectTransform.localPosition += new Vector3(-16, 0, 0);
-        image.overrideSprite = possibleSprites[buyIndex];
+        image.overrideSprite = booth.buying.icon;
 
 
         GameObject forTextGO = new GameObject("Space Text");
@@ -78,7 +75,7 @@ public class ChatCollision : MonoBehaviour
         image.rectTransform.SetParent(display.transform);
         image.rectTransform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
         image.rectTransform.localPosition += new Vector3(16, 0, 0);
-        image.overrideSprite = possibleSprites[sellIndex];
+        image.overrideSprite = booth.selling.icon;
 
 
         display.transform.position = this.transform.position;
@@ -86,15 +83,16 @@ public class ChatCollision : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        player.canTrade = false;
 
         if (collision.gameObject.tag == "Player")
         {
             camController.targetOrthoSize = 12;
             camController.targetPosition = collision.gameObject.transform;
-        }
 
-        Destroy(display);
-        display = null;
+            player.SetBooth(null);
+
+            Destroy(display);
+            display = null;
+        }
     }
 }

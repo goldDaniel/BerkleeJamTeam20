@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 638614529}
   m_Layer: 0
   m_Name: ItemDatabase
-  m_TagString: Untagged
+  m_TagString: Item Database
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -570,6 +570,11 @@ PrefabInstance:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 1385185543}
+    - target: {fileID: 8616127990450287536, guid: 95adb2e5e55ab5542b97f02f926b5900,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8616127990450287537, guid: 95adb2e5e55ab5542b97f02f926b5900,
         type: 3}
       propertyPath: m_Constraints
@@ -940,7 +945,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27af327698f3b4011aa095c89602b5b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currItemIndex: 0
   itemDatabase: {fileID: 638614529}
 --- !u!212 &1385185544
 SpriteRenderer:

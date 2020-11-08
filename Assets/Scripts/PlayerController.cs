@@ -1,25 +1,42 @@
-﻿using UnityEngine;
-using UnityEngine.PlayerLoop;
+﻿
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
 
     public Vector3 velocity;
-
     public Rigidbody2D body;
 
-    public bool canTrade;
-    public int sellIndex;
-    public int buyIndex;
+    private Booth booth;
     public Inventory inventory;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        booth = null;
         body = GetComponent<Rigidbody2D>();
     }
 
+    public void SetBooth(Booth booth)
+    {
+        this.booth = booth;
+    }
+
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.T) && booth != null)
+        {
+            if (inventory.currItem != booth.buying)
+            {
+                Debug.Log("invalid trade!");
+            }
+            else
+            {
+                inventory.tradeItem(0);
+            }
+        }
+    }
 
     void FixedUpdate()
     {
@@ -47,16 +64,5 @@ public class PlayerController : MonoBehaviour
         velocity = velocity.normalized * speed;
         body.velocity = velocity;
 
-        if (Input.GetKey(KeyCode.T) && canTrade)
-        {
-            if (inventory.currItemIndex != buyIndex)
-            {
-                Debug.Log("invalid trade!");
-            }
-            else
-            {
-                inventory.tradeItem(sellIndex);
-            }
-        }
     }
 }
