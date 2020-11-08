@@ -16,11 +16,15 @@ public class LevelGenerator : MonoBehaviour
 
     private float levelSize;
 
+    public float levelTime;
+
     // Start is called before the first frame update
     void Start()
     {
         float level1Size = 25;
         levelSize = level1Size + level1Size * (level - 1) * 1.1f;
+
+        levelTime = 100; //update later with formula
         
         GenerateKiosks();
         GenerateWalls();
