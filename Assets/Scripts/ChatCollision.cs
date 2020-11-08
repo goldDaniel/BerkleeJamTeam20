@@ -39,6 +39,7 @@ public class ChatCollision : MonoBehaviour
 
             camController.targetOrthoSize = 6;
             camController.targetPosition = this.transform;
+            camController.offset = new Vector3(0, 2, 0);
 
 
             display = new GameObject("Booth Text");
