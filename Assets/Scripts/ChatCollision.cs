@@ -18,6 +18,7 @@ public class ChatCollision : MonoBehaviour
     public void Start()
     {
         booth = gameObject.GetComponentInParent<Booth>();
+        /*
         ItemDatabase db = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>();
         
 
@@ -28,6 +29,7 @@ public class ChatCollision : MonoBehaviour
         {
             booth.buying = db.itemList[Random.Range(0, db.itemList.Count)];
         }
+        */
     }
 
     void OnTriggerEnter2D(Collider2D collision)
