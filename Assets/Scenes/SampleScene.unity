@@ -603,7 +603,7 @@ PrefabInstance:
     - target: {fileID: 8616127990450287543, guid: 95adb2e5e55ab5542b97f02f926b5900,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 8.33
       objectReference: {fileID: 0}
     - target: {fileID: 8616127990450287543, guid: 95adb2e5e55ab5542b97f02f926b5900,
         type: 3}
@@ -818,7 +818,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
