@@ -851,6 +851,21 @@ PrefabInstance:
       propertyPath: itemDatabase
       value: 
       objectReference: {fileID: 638614529}
+    - target: {fileID: 1566397289957396057, guid: 95adb2e5e55ab5542b97f02f926b5900,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1566397289957396057, guid: 95adb2e5e55ab5542b97f02f926b5900,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1566397289957396057, guid: 95adb2e5e55ab5542b97f02f926b5900,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 1566397290666598199, guid: 95adb2e5e55ab5542b97f02f926b5900,
         type: 3}
       propertyPath: m_SortingOrder
