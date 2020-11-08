@@ -1212,6 +1212,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: baa8a744abd8243a2a0e13281d4cd619,
         type: 3}
+    - target: {fileID: 1566397289957396055, guid: 95adb2e5e55ab5542b97f02f926b5900,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1566397289957396056, guid: 95adb2e5e55ab5542b97f02f926b5900,
         type: 3}
       propertyPath: itemDatabase
