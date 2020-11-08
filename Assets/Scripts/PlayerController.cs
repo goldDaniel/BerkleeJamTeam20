@@ -66,8 +66,5 @@ public class PlayerController : MonoBehaviour
         body.velocity = velocity;
 
         animator.SetFloat("YMovement", velocity.y); 
-
-        
-
     }
 }
