@@ -9,24 +9,15 @@ public class Timer : MonoBehaviour
     public LevelGenerator lg;
     public Text timerText;
 
+    private float countdown;
+
     void Start()
-    {
-        StartCoroutine(loadTimer(lg.levelTime));
+    { 
         Time.timeScale = 1;
     }
 
-    IEnumerator loadTimer(float totalTime)
+    void Update()
     {
-        float countdown = totalTime;
-        Debug.Log(countdown);
-        while (countdown >= 0)
-        {
-            yield return new WaitForSeconds(1);
-            timerText.text = countdown.ToString();
-            countdown--;
-        }
-        
-        //reload scene if fail, load next level if win
+        timerText.text = lg.GetLevelTime().ToString();
     }
-
 }

@@ -6,13 +6,12 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     public Item currItem;
-
-    public ItemDatabase itemDatabase;
     private SpriteRenderer spriteRenderer;
 
-    private void Start()
+
+    public void setupInventory(Item item)
     {
-        currItem = itemDatabase.itemList[Random.Range(0, itemDatabase.itemList.Count)];
+        currItem = item;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = currItem.icon;
     }

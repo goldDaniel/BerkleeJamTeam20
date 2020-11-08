@@ -7,11 +7,8 @@ public class ChatCollision : MonoBehaviour
 {
     
     public CameraController camController;
-
     private Booth booth;
-
     private GameObject display;
-
     public Sprite bubbleSprite;
 
     public PlayerController player;
@@ -20,18 +17,6 @@ public class ChatCollision : MonoBehaviour
     public void Start()
     {
         booth = gameObject.GetComponentInParent<Booth>();
-        /*
-        ItemDatabase db = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>();
-        
-
-        booth.selling = db.itemList[Random.Range(0, db.itemList.Count)];
-
-        booth.buying = booth.selling;
-        while(booth.buying == booth.selling)
-        {
-            booth.buying = db.itemList[Random.Range(0, db.itemList.Count)];
-        }
-        */
     }
 
     void OnTriggerEnter2D(Collider2D collision)

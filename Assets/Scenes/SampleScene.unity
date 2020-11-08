@@ -151,7 +151,7 @@ Transform:
   - {fileID: 1325179916}
   - {fileID: 1176161754}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &459808827
 GameObject:
@@ -243,7 +243,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -343,7 +343,7 @@ Transform:
   m_Children:
   - {fileID: 633105667}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &633105666
 GameObject:
@@ -481,6 +481,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c53cac289b7bf434d88538a8048325f5, type: 3}
   - {fileID: 21300000, guid: 013ed787d510045b7a157b7d2bbe7c1c, type: 3}
   - {fileID: 21300000, guid: beca54d1bd0264d259098b34509cae50, type: 3}
+  - {fileID: 21300000, guid: b95051c888a004e9d9cade7839fc6844, type: 3}
+  - {fileID: 21300000, guid: 5113cfd30bbe44fdfb10a69b5dbd725f, type: 3}
+  - {fileID: 21300000, guid: e1c6bd7f2f73e45fe9996f8db7727bf1, type: 3}
+  - {fileID: 21300000, guid: 0980e4cf0cd934309a7925d7f29b0633, type: 3}
+  - {fileID: 21300000, guid: 76ba0a6843aa54cfcac1a2cc18c569e4, type: 3}
+  - {fileID: 21300000, guid: aae6ab8288d29411484858f2dfd2e102, type: 3}
   - {fileID: 21300000, guid: db9fcee571e0d450d810a96739688f8c, type: 3}
 --- !u!4 &638614530
 Transform:
@@ -494,7 +500,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &656940959
 GameObject:
@@ -521,7 +527,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 656940959}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.13, y: 9.62, z: 0}
+  m_LocalPosition: {x: 2.59, y: 20.54, z: 0}
   m_LocalScale: {x: 2.4495, y: 2.4495, z: 2.4495}
   m_Children: []
   m_Father: {fileID: 2057640459}
@@ -571,7 +577,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 19.99399, y: 14.001257}
+  m_Size: {x: 180.59897, y: 104.37409}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1104,7 +1110,7 @@ Transform:
   - {fileID: 1495327876}
   - {fileID: 656940960}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2057640460
 MonoBehaviour:
@@ -1125,7 +1131,7 @@ MonoBehaviour:
   controller: {fileID: 519420030}
   player: {fileID: 1407629500}
   level: 1
-  boothSprites:
+  boothSpritesMaster:
   - {fileID: 21300000, guid: bc1c02d083829432ca5784283768ad41, type: 3}
   - {fileID: 21300000, guid: 963da379b7ddf48feabf160d27cc9282, type: 3}
   - {fileID: 21300000, guid: 5d4eea1c55ffd4749aee564c53d3fc47, type: 3}
@@ -1138,7 +1144,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d8a5139107e164b64a9886f884aba781, type: 3}
   - {fileID: 21300000, guid: 71eca6141d6664cae95904859bcf2077, type: 3}
   - {fileID: 21300000, guid: 2d2719c22483c45949a518f3f131657e, type: 3}
-  levelTime: 100
 --- !u!1001 &1566397290805710687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1154,7 +1159,7 @@ PrefabInstance:
     - target: {fileID: 1566397289394411245, guid: 95adb2e5e55ab5542b97f02f926b5900,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.33
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1566397289394411245, guid: 95adb2e5e55ab5542b97f02f926b5900,
         type: 3}
@@ -1201,6 +1206,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1566397289948084195, guid: 95adb2e5e55ab5542b97f02f926b5900,
+        type: 3}
+      propertyPath: bubbleSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: baa8a744abd8243a2a0e13281d4cd619,
+        type: 3}
     - target: {fileID: 1566397289957396056, guid: 95adb2e5e55ab5542b97f02f926b5900,
         type: 3}
       propertyPath: itemDatabase

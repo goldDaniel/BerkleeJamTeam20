@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -12,22 +13,107 @@ public class LevelGenerator : MonoBehaviour
 
     public int level = 1;
 
-    public List<Sprite> boothSprites;
+    public List<Sprite> boothSpritesMaster;
 
     private float levelSize;
+    private float levelTime;
+    
+    private Item startItem;
+    private Item goalItem;
 
-    public float levelTime;
+
+    private float levelOverTime = 4;
+    private float levelOverTimer = 4;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        float level1Size = 25;
-        levelSize = level1Size + level1Size * (level - 1) * 1.1f;
+        GenerateLevel();
+    }
 
-        levelTime = 100; //update later with formula
-        
+    void GenerateLevel()
+    {
+        player.Reset();
+
+        Transform walls = this.transform.Find("Walls");
+        Transform booths = this.transform.Find("Booths");
+
+        foreach(Transform child in walls.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (Transform child in booths.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        GenerateSizeAndLevelTime();
+
         GenerateKiosks();
         GenerateWalls();
+    }
+
+    public int GetLevelTime()
+    {
+        return (int)levelTime;
+    }
+
+    private void GenerateSizeAndLevelTime()
+    {
+        float level1Size = 20;
+        levelSize = level1Size + level1Size/2.0f * (level - 1) * 1.01f;
+
+        levelTime = 50 - (level - 1) * 5; //update later with formula
+    }
+
+     void Update()
+     {
+        if(levelTime <= 0)
+        {
+            levelTime = 0;
+
+            //show lose screen for X 
+
+            levelOverTimer -= Time.deltaTime;
+            if(levelOverTimer <= 0)
+            {
+                levelOverTimer = levelOverTime;
+                ResetLevel();
+            }
+            else
+            {
+                player.ShowLoseDialog();
+            }
+        }
+        else
+        {
+            if(player.inventory.currItem == goalItem)
+            {
+                levelOverTimer -= Time.deltaTime;
+                if (levelOverTimer <= 0)
+                {
+                    levelOverTimer = levelOverTime;
+                    level++;
+                    GenerateLevel();
+                }
+                else
+                {
+                    player.ShowWinDialog();
+                }
+            }
+            else
+            {
+                levelTime -= Time.deltaTime;
+            }
+        }
+     }
+
+    void ResetLevel()
+    {
+        player.Reset();
+        player.inventory.setupInventory(startItem);
+        GenerateSizeAndLevelTime();
     }
 
     private void GenerateKiosks()
@@ -38,28 +124,36 @@ public class LevelGenerator : MonoBehaviour
 
         ItemDatabase db = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>();
         List<Item> dbList = new List<Item>(db.itemList);
-        Item playerItem = player.inventory.currItem;
-        dbList.Remove(playerItem);
-        //shuffle dbList
-        for (int i = dbList.Count - 1; i >= 1; i--){
+        
+
+        //shufafle dbList
+        for (int i = dbList.Count - 1; i >= 1; i--)
+        {
             int randomIndex = Random.Range(0,i+1);
             Item temp = dbList[randomIndex];
             dbList[randomIndex] = dbList[i];
             dbList[i] = temp;
         }
-        dbList.Insert(0,playerItem);
+        player.inventory.setupInventory(dbList[0]);
+        startItem = player.inventory.currItem;
 
+
+
+        List<Sprite> boothSprites = new List<Sprite>(boothSpritesMaster);
         for (int i = 0; i < boothCount; i++)
         {
             GameObject booth = Instantiate(boothPrefab);
 
             Booth boothTyped = booth.GetComponentInParent<Booth>();
 
-            if (i+1 < dbList.Count){
+            if (i+1 < dbList.Count)
+            {
                 boothTyped.buying = dbList[i];
                 boothTyped.selling = dbList[i+1];
+                goalItem = boothTyped.selling;
             }
-            else { //repeat booths, not officially part of sequence
+            else 
+            {   //repeat booths, not officially part of sequence
                 boothTyped.buying = dbList[Random.Range(0,dbList.Count)];
                 boothTyped.selling = boothTyped.buying;
                 while(boothTyped.selling == boothTyped.buying)
@@ -83,8 +177,8 @@ public class LevelGenerator : MonoBehaviour
             {
                 positionFound = true;
 
-                pos.x = Random.Range(-levelSize + 2, levelSize - 2);
-                pos.y = Random.Range(-levelSize + 2, levelSize - 2);
+                pos.x = Random.Range(-levelSize + 5, levelSize - 5);
+                pos.y = Random.Range(-levelSize + 5, levelSize - 5);
                 foreach (Transform t in kioskTransforms)
                 {
                     if (Vector3.Distance(pos, t.position) < minDistanceFromKiosk)
@@ -100,14 +194,14 @@ public class LevelGenerator : MonoBehaviour
             booth.GetComponent<SpriteRenderer>().sprite = boothSprites[spriteIndex];
             boothSprites.RemoveAt(spriteIndex);
         }
+
+        player.SetGoalItem(goalItem);
     }
 
     private void GenerateWalls()
     {
         Transform wallParent = this.transform.Find("Walls"); 
-        
 
-        
 
         GameObject wallEast = Instantiate(wallPrefab);
         wallEast.transform.position = new Vector3(levelSize, 0, 0);
