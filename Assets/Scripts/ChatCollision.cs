@@ -60,7 +60,7 @@ public class ChatCollision : MonoBehaviour
             GameObject textGO = new GameObject("Title Text");
             Text text = textGO.AddComponent<Text>();
             text.rectTransform.SetParent(display.transform);
-            text.rectTransform.localPosition += new Vector3(42, 60, 0);
+            text.rectTransform.localPosition += new Vector3(42, 53, 0);
             text.rectTransform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
             text.text = "I will trade";
             text.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
@@ -71,14 +71,14 @@ public class ChatCollision : MonoBehaviour
             image = buyingGO.AddComponent<Image>();
             image.rectTransform.SetParent(display.transform);
             image.rectTransform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-            image.rectTransform.localPosition += new Vector3(10, 60, 0);
+            image.rectTransform.localPosition += new Vector3(18, 55, 0);
             image.overrideSprite = booth.buying.icon;
 
 
             GameObject forTextGO = new GameObject("Space Text");
             text = forTextGO.AddComponent<Text>();
             text.rectTransform.SetParent(display.transform);
-            text.rectTransform.localPosition += new Vector3(40, 50, 0);
+            text.rectTransform.localPosition += new Vector3(47, 40, 0);
             text.rectTransform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
             text.text = "for";
             text.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
@@ -88,7 +88,7 @@ public class ChatCollision : MonoBehaviour
             image = sellingGO.AddComponent<Image>();
             image.rectTransform.SetParent(display.transform);
             image.rectTransform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-            image.rectTransform.localPosition += new Vector3(40, 60, 0);
+            image.rectTransform.localPosition += new Vector3(50, 55, 0);
             image.overrideSprite = booth.selling.icon;
 
 
