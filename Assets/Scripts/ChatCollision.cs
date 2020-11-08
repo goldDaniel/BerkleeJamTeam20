@@ -1,5 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.Experimental.AI;
 using UnityEngine.UI;
 
 public class ChatCollision : MonoBehaviour
@@ -30,7 +31,7 @@ public class ChatCollision : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collision)
-    {
+    { 
         if(collision.gameObject.tag == "Player")
         {
             player.SetBooth(booth);
@@ -92,7 +93,7 @@ public class ChatCollision : MonoBehaviour
         {
             camController.targetOrthoSize = 12;
             camController.targetPosition = collision.gameObject.transform;
-            camController.offset = 0;
+            camController.offset = new Vector3(0,0,0);
 
             player.SetBooth(null);
 
