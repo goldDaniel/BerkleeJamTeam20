@@ -33,20 +33,36 @@ public class LevelGenerator : MonoBehaviour
         int boothCount = 4 + (2 * (level - 1));
 
         ItemDatabase db = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>();
-        List<Item> visitedItems = new List<Item>();
-        Item nextBuy = player.inventory.currItem;
-        visitedItems.Add(nextBuy);
+        List<Item> dbList = new List<Item>(db.itemList);
+        Item playerItem = player.inventory.currItem;
+        dbList.Remove(playerItem);
+        //shuffle dbList
+        for (int i = dbList.Count - 1; i >= 1; i--){
+            int randomIndex = Random.Range(0,i+1);
+            Item temp = dbList[randomIndex];
+            dbList[randomIndex] = dbList[i];
+            dbList[i] = temp;
+        }
+        dbList.Insert(0,playerItem);
 
         for (int i = 0; i < boothCount; i++)
         {
             GameObject booth = Instantiate(boothPrefab);
 
-            booth.buying = nextBuy;
-            do {
-                booth.selling = db.itemList[Random.Range(0, db.itemList.Count)];
-            } while(visitedItems.Contains(booth.selling))
-            nextBuy = booth.selling;
-            visitedItems.Add(nextBuy);
+            Booth boothTyped = booth.GetComponentInParent<Booth>();
+
+            if (i+1 < dbList.Count){
+                boothTyped.buying = dbList[i];
+                boothTyped.selling = dbList[i+1];
+            }
+            else { //repeat booths, not officially part of sequence
+                boothTyped.buying = dbList[Random.Range(0,dbList.Count)];
+                boothTyped.selling = boothTyped.buying;
+                while(boothTyped.selling == boothTyped.buying)
+                {
+                    boothTyped.selling = db.itemList[Random.Range(0, db.itemList.Count)];
+                }
+            }
 
             booth.transform.parent = this.transform.Find("Booths");
 
