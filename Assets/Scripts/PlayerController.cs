@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 velocity;
     public Rigidbody2D body;
-    public Animator animator;
+    
+    private Animator animator;
 
     private Booth booth;
     public Inventory inventory;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     {
         booth = null;
         body = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     public void SetBooth(Booth booth)
