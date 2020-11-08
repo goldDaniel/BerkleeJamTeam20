@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 velocity;
     public Rigidbody2D body;
+    public Animator animator;
 
     private Booth booth;
     public Inventory inventory;
@@ -32,6 +33,8 @@ public class PlayerController : MonoBehaviour
                 inventory.tradeItem(booth.selling);
             }
         }
+
+        
     }
 
     void FixedUpdate()
@@ -59,6 +62,10 @@ public class PlayerController : MonoBehaviour
 
         velocity = velocity.normalized * speed;
         body.velocity = velocity;
+
+        animator.SetFloat("YMovement", velocity.y); 
+
+        
 
     }
 }
