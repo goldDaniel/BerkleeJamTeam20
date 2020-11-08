@@ -540,6 +540,11 @@ PrefabInstance:
       propertyPath: camController
       value: 
       objectReference: {fileID: 519420030}
+    - target: {fileID: 6333989603735097111, guid: 78ba36ca2bf029f41b459944a1617f11,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1407629500}
     - target: {fileID: 6333989603944567496, guid: 78ba36ca2bf029f41b459944a1617f11,
         type: 3}
       propertyPath: m_Name
@@ -560,6 +565,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2057640459}
     m_Modifications:
+    - target: {fileID: 8616127990450287536, guid: 95adb2e5e55ab5542b97f02f926b5900,
+        type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 1385185543}
     - target: {fileID: 8616127990450287537, guid: 95adb2e5e55ab5542b97f02f926b5900,
         type: 3}
       propertyPath: m_Constraints
@@ -704,6 +714,11 @@ PrefabInstance:
       propertyPath: camController
       value: 
       objectReference: {fileID: 519420030}
+    - target: {fileID: 6333989603735097111, guid: 78ba36ca2bf029f41b459944a1617f11,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1407629500}
     - target: {fileID: 6333989603944567496, guid: 78ba36ca2bf029f41b459944a1617f11,
         type: 3}
       propertyPath: m_Name
@@ -977,6 +992,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1407629500 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8616127990450287536, guid: 95adb2e5e55ab5542b97f02f926b5900,
+    type: 3}
+  m_PrefabInstance: {fileID: 1117442486}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad86442b8f15a11459baf6fe140e1965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1450406488 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 972494620422296102, guid: 04c77601c1bdfcf4993325f3b8a5ae99,
@@ -1084,6 +1111,11 @@ PrefabInstance:
       propertyPath: camController
       value: 
       objectReference: {fileID: 519420030}
+    - target: {fileID: 6333989603735097111, guid: 78ba36ca2bf029f41b459944a1617f11,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1407629500}
     - target: {fileID: 6333989603944567496, guid: 78ba36ca2bf029f41b459944a1617f11,
         type: 3}
       propertyPath: m_Name
@@ -1477,6 +1509,11 @@ PrefabInstance:
       propertyPath: camController
       value: 
       objectReference: {fileID: 519420030}
+    - target: {fileID: 6333989603735097111, guid: 78ba36ca2bf029f41b459944a1617f11,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1407629500}
     - target: {fileID: 6333989603944567496, guid: 78ba36ca2bf029f41b459944a1617f11,
         type: 3}
       propertyPath: m_Name
