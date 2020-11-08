@@ -27,13 +27,9 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.T) && booth != null)
         {
-            if (inventory.currItem != booth.buying)
+            if (inventory.currItem == booth.buying)
             {
-                Debug.Log("invalid trade!");
-            }
-            else
-            {
-                inventory.tradeItem(0);
+                inventory.tradeItem(booth.selling);
             }
         }
     }

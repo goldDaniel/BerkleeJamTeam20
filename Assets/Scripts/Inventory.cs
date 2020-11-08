@@ -14,20 +14,15 @@ public class Inventory : MonoBehaviour
     {
         currItem = itemDatabase.itemList[Random.Range(0, itemDatabase.itemList.Count)];
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        renderItem();
-    }
-
-    private void renderItem()
-    {
         spriteRenderer.sprite = currItem.icon;
     }
 
-    public int tradeItem(int buyIndex)
+
+    public Item tradeItem(Item buyItem)
     {
-        //int sellIndex = currItemIndex;
-        //currItemIndex = buyIndex;
-        //renderItem();
-        //return sellIndex;
-        return 0;
+        Item sellItem = currItem;
+        currItem = buyItem;
+        spriteRenderer.sprite = currItem.icon;
+        return sellItem;
     }
 }
