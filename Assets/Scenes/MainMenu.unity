@@ -572,21 +572,27 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 50
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.2
-  m_Text: 'Programming:  Daniel Gold (golddaniel.ca), Christina Yu, Elena Kosowski
+  m_Text: 'Game developers:
 
-    Art: 
-    Elena Kosowski, Christina Yu
+    Daniel Gold (programming), golddaniel.ca
 
-    Sound design:  Miles
+    Elena
+    Kosowski (art, programming), ig@sugarnscarves
 
-    Composition for future
-    music: TBA :)
+    Christina Yu (programming,
+    art), cyul8r.itch.io
+
+    Miles (sound design)
+
+
+    Composers for future music:
+    TBA :)
 
 '
 --- !u!222 &453069370
@@ -596,7 +602,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453069367}
-  m_CullTransparentMesh: 0
+  m_CullTransparentMesh: 1
 --- !u!1 &578222275
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,7 +778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &658993641
 RectTransform:
   m_ObjectHideFlags: 0
