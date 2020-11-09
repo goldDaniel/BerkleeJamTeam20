@@ -100,7 +100,6 @@ public class ChatCollision : MonoBehaviour
             camController.targetPosition = this.transform;
             camController.offset = new Vector3(0, 2, 0);
 
-
             bubbleImage.enabled = true;
             titleText.enabled = true;
             if(!booth.hasPurchased)

@@ -196,6 +196,23 @@ public class LevelGenerator : MonoBehaviour
         }
 
         player.SetGoalItem(goalItem);
+
+        Transform screnSpaceCanvas = Camera.main.transform.Find("Canvas");
+        GameObject goalGO = new GameObject("Goal Item");
+        Image goalImg = goalGO.AddComponent<Image>();
+        goalImg.rectTransform.SetParent(screnSpaceCanvas);
+        goalImg.rectTransform.localPosition = new Vector3(-400, 250, 0);
+        goalImg.rectTransform.localScale = new Vector3(1f, 1f, 1f);
+        goalImg.sprite = goalItem.icon;
+
+        GameObject textGO = new GameObject("Goal Text");
+        Text goalText = textGO.AddComponent<Text>();
+        goalText.rectTransform.SetParent(screnSpaceCanvas);
+        goalText.rectTransform.localPosition = new Vector3(-500, 250, 0);
+        goalText.rectTransform.localScale = new Vector3(1, 1, 1);
+        goalText.fontSize = 32;
+        goalText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        goalText.text = "You Want: ";
     }
 
     private void GenerateWalls()
