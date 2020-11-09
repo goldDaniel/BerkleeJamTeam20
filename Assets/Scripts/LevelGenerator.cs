@@ -13,6 +13,8 @@ public class LevelGenerator : MonoBehaviour
 
     public int level = 1;
 
+    private List<Booth> boothsList; 
+
     public List<Sprite> boothSpritesMaster;
 
     private float levelSize;
@@ -34,6 +36,8 @@ public class LevelGenerator : MonoBehaviour
 
     void GenerateLevel()
     {
+        boothsList = new List<Booth>();
+
         player.Reset();
 
         Transform walls = this.transform.Find("Walls");
@@ -64,7 +68,7 @@ public class LevelGenerator : MonoBehaviour
         float level1Size = 20;
         levelSize = level1Size + level1Size/2.0f * (level - 1) * 1.01f;
 
-        levelTime = 50 - (level - 1) * 5; //update later with formula
+        levelTime = 40 + (level - 1) * 5; //update later with formula
     }
 
      void Update()
@@ -114,6 +118,11 @@ public class LevelGenerator : MonoBehaviour
         player.Reset();
         player.inventory.setupInventory(startItem);
         GenerateSizeAndLevelTime();
+
+        foreach(Booth b in boothsList)
+        {
+            b.hasPurchased = false;
+        }
     }
 
     private void GenerateKiosks()
@@ -145,6 +154,7 @@ public class LevelGenerator : MonoBehaviour
             GameObject booth = Instantiate(boothPrefab);
 
             Booth boothTyped = booth.GetComponentInParent<Booth>();
+            boothsList.Add(boothTyped);
 
             if (i+1 < dbList.Count)
             {
@@ -169,25 +179,26 @@ public class LevelGenerator : MonoBehaviour
             kioskTransforms.Add(booth.transform);
 
 
-            Vector3 pos = new Vector3();
 
 
+            Vector3 boothPos = new Vector3();
             bool positionFound = false;
             while (!positionFound)
             {
+
                 positionFound = true;
 
-                pos.x = Random.Range(-levelSize + 5, levelSize - 5);
-                pos.y = Random.Range(-levelSize + 5, levelSize - 5);
+                boothPos.x = Random.Range(-levelSize + 5, levelSize - 5);
+                boothPos.y = Random.Range(-levelSize + 5, levelSize - 5);
                 foreach (Transform t in kioskTransforms)
                 {
-                    if (Vector3.Distance(pos, t.position) < minDistanceFromKiosk)
+                    if (Vector3.Distance(boothPos, t.position) < minDistanceFromKiosk)
                     {
                         positionFound = false;
                     }
                 }
             }
-            booth.transform.position = pos;
+            booth.transform.position = boothPos;
 
 
             int spriteIndex = Random.Range(0, boothSprites.Count);
@@ -204,24 +215,34 @@ public class LevelGenerator : MonoBehaviour
         if(previous != null)
         {
             Destroy(previous.gameObject);
-        }    
-        
+        }
 
-        GameObject goalGO = new GameObject("Goal Item");
-        Image goalImg = goalGO.AddComponent<Image>();
-        goalImg.rectTransform.SetParent(screnSpaceCanvas);
-        goalImg.rectTransform.localPosition = new Vector3(-400, 250, 0);
-        goalImg.rectTransform.localScale = new Vector3(1f, 1f, 1f);
-        goalImg.sprite = goalItem.icon;
 
         GameObject textGO = new GameObject("Goal Text");
+        textGO.transform.position = new Vector3(0, 0, 0);
         Text goalText = textGO.AddComponent<Text>();
         goalText.rectTransform.SetParent(screnSpaceCanvas);
-        goalText.rectTransform.localPosition = new Vector3(-500, 250, 0);
+        goalText.transform.localPosition = new Vector3(0, 0, 0);
+        goalText.rectTransform.anchorMin = new Vector4(0, 1);
+        goalText.rectTransform.anchorMax = new Vector4(0, 1);
+        goalText.rectTransform.anchoredPosition = new Vector3(100, -120, 0);
+        
         goalText.rectTransform.localScale = new Vector3(1, 1, 1);
         goalText.fontSize = 32;
         goalText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
         goalText.text = "You Want: ";
+
+        GameObject goalGO = new GameObject("Goal Item");
+        goalGO.transform.position = new Vector3(0, 0, 0);
+        Image goalImg = goalGO.AddComponent<Image>();
+        goalImg.rectTransform.SetParent(screnSpaceCanvas);
+        goalImg.transform.localPosition = new Vector3(0, 0, 0);
+        goalImg.rectTransform.anchorMin = new Vector2(0f, 1);
+        goalImg.rectTransform.anchorMax = new Vector2(0f, 1);
+        goalImg.rectTransform.anchoredPosition = new Vector3(200, -120, 0);
+        
+        goalImg.rectTransform.localScale = new Vector3(1f, 1f, 1f);
+        goalImg.sprite = goalItem.icon;
     }
 
     private void GenerateWalls()

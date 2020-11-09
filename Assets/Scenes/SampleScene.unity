@@ -655,7 +655,7 @@ Camera:
   far clip plane: 1000
   field of view: 76.7
   orthographic: 1
-  orthographic size: 41.68705
+  orthographic size: 30
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -767,7 +767,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: -1911012981
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!1 &1234791825
 GameObject:
