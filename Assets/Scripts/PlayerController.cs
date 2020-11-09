@@ -12,6 +12,11 @@ public class PlayerController : MonoBehaviour
 
     private Animator animator;
 
+    private AudioSource walkSound;
+    private AudioSource tradeSound;
+    private AudioSource denySound;
+
+
     private Booth booth;
     public Inventory inventory;
 
@@ -30,6 +35,10 @@ public class PlayerController : MonoBehaviour
         booth = null;
         body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        walkSound = transform.Find("WalkSound").GetComponent<AudioSource>();
+        tradeSound = transform.Find("TradeSound").GetComponent<AudioSource>();
+        denySound = transform.Find("DenyTrade").GetComponent<AudioSource>();
 
         Transform parent = GameObject.Find("UI").transform.Find("Canvas");
 
@@ -71,12 +80,38 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if( Input.GetKey(KeyCode.W) || 
+            Input.GetKey(KeyCode.A) ||
+            Input.GetKey(KeyCode.S) ||
+            Input.GetKey(KeyCode.D))
+        {
+            if(!walkSound.isPlaying)
+            {
+                walkSound.Play(0);
+            }
+        }
+
         if (Input.GetKey(KeyCode.T) && booth != null)
         {
             if (inventory.currItem == booth.buying)
             {
+                if(!booth.hasPurchased)
+                {
+                    tradeSound.Play(0);
+                }
+
                 inventory.tradeItem(booth.selling);
                 booth.hasPurchased = true;
+            }
+            else
+            {
+                if(!booth.hasPurchased)
+                {
+                    if (!denySound.isPlaying)
+                    {
+                        denySound.Play(0);
+                    }
+                }    
             }
         }
 
