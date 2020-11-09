@@ -76,6 +76,7 @@ public class PlayerController : MonoBehaviour
             if (inventory.currItem == booth.buying)
             {
                 inventory.tradeItem(booth.selling);
+                booth.hasPurchased = true;
             }
         }
 
