@@ -588,11 +588,11 @@ MonoBehaviour:
     Christina Yu (programming,
     art), cyul8r.itch.io
 
-    Miles (sound design)
+    Miles Acquaviva (music, sound design)
 
 
-    Composers for future music:
-    TBA :)
+    Composers
+    for future music: TBA :)
 
 '
 --- !u!222 &453069370
@@ -778,7 +778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &658993641
 RectTransform:
   m_ObjectHideFlags: 0
