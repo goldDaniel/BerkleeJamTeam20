@@ -222,22 +222,22 @@ public class LevelGenerator : MonoBehaviour
 
         GameObject wallEast = Instantiate(wallPrefab);
         wallEast.transform.position = new Vector3(levelSize, 0, 0);
-        wallEast.transform.localScale = new Vector3(1, levelSize * 2, 1);
+        wallEast.transform.localScale = new Vector3(1, levelSize * 7, 1);
         wallEast.transform.parent = wallParent;
 
         GameObject wallWest = Instantiate(wallPrefab);
         wallWest.transform.position = new Vector3(-levelSize, 0, 0);
-        wallWest.transform.localScale = new Vector3(1, levelSize * 2, 1);
+        wallWest.transform.localScale = new Vector3(1, levelSize * 7, 1);
         wallWest.transform.parent = wallParent;
 
         GameObject wallNorth = Instantiate(wallPrefab);
         wallNorth.transform.position = new Vector3(0, levelSize, 0);
-        wallNorth.transform.localScale = new Vector3(levelSize * 2, 1, 1);
+        wallNorth.transform.localScale = new Vector3(levelSize * 7, 1, 1);
         wallNorth.transform.parent = wallParent;
 
         GameObject wallSouth = Instantiate(wallPrefab);
         wallSouth.transform.position = new Vector3(0, -levelSize, 0);
-        wallSouth.transform.localScale = new Vector3(levelSize * 2, 1, 1);
+        wallSouth.transform.localScale = new Vector3(levelSize * 7, 1, 1);
         wallSouth.transform.parent = wallParent;
     }
 }
